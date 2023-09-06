@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wayabank-customer-webapp
+  labels:
+    app: wayabank-customer-webapp
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: wayabank-customer-webapp
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wayabank-customer-webapp
+  labels:
+    app: wayabank-customer-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wayabank-customer-webapp
+  template:
+    metadata:
+      labels:
+        app: wayabank-customer-webapp
+    spec:
+      containers:
+      - name: wayabank-customer-webapp
+        image: 863852973330.dkr.ecr.eu-west-2.amazonaws.com/wayabank-customer-webapp:imgtag
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "49m"
+          limits:
+            memory: "300Mi"
+            cpu: "138m"
+        env:
+        - name: MESSAGING_GROUP_ID
+          value: "events" 
+        ports: 
+        - name: http
+          containerPort: 80
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node.kubernetes.io/description
+                operator: In
+                values:
+                - cfgprofile
+                - wayabank-cfgprofile

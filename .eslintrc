@@ -1,0 +1,72 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  // "parser": "babel-eslint",
+  "extends": [ "prettier", "plugin:react/recommended"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly",
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      // "warn",
+      {
+        "trailingComma": "es5",
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": true,
+        "endOfLine": "auto"
+      }
+    ],
+    "arrow-body-style": 0,
+    "react/prop-types": 0,
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-nested-ternary": "off",
+    "no-console": "off",
+    "indent": "off",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-newline": "off",
+    "react/display-name": "off",
+    "react/destructuring-assignment": 0,
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        "declaration": "ignore",
+        "assignment": "ignore",
+        "return": "ignore",
+        "arrow": "ignore",
+        "condition": "ignore",
+        "logical": "ignore",
+        "prop": "ignore"
+      }
+    ],
+    "no-plusplus": "off"
+  }
+}
