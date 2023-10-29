@@ -36,7 +36,7 @@ pipeline {
 
                     sh '''
                         sudo npm install
-                        sudo npm run build
+                        sudo npm run buil
                     '''
                     echo 'Build with Nodejs'
                 }
